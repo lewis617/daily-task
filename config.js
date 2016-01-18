@@ -1,5 +1,5 @@
 'use strict';
-define(['angular'],function(angular){
+define([],function(){
 
   // Declare app level module which depends on filters, and services
   return angular.module('myApp.config', [])

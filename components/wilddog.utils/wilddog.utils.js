@@ -1,6 +1,6 @@
 
 // a simple wrapper on wilddog and AngularFire to simplify deps and keep things DRY
-define(['wildAngular','ngRoute','config'],function(){
+define(['ngRoute','config'],function(){
     // when $routeProvider.whenAuthenticated() is called, the path is stored in this list
     // to be used by authRequired() in the services below
     var securedRoutes = [];

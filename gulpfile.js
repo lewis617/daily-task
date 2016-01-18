@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var rjs = require('requirejs');
 
 var paths = {
-  scripts: ['modules/**/*.js', 'modules/**/**/*.js']
+  scripts: ['modules/**/*.js', 'modules/**/**/*.js','main.js']
 };
 
 gulp.task('build', function(cb){

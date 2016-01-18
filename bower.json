@@ -17,8 +17,6 @@
   ],
   "dependencies": {
     "angular": "~1.4.7",
-    "wilddog": "~0.4.8",
-    "wild-angular": "~0.0.1",
     "requirejs": "~2.1.20",
     "text": "~2.0.14",
     "domReady": "~2.0.1",

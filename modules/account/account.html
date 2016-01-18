@@ -1,0 +1,50 @@
+<div class="container" >
+    <div class="col-md-6 col-md-offset-3">
+        <h2 class="text-center">账户</h2>
+        <uib-accordion close-others="true">
+            <uib-accordion-group heading="简介" is-open="true">
+                <form >
+                    <div class="form-group">
+                        <lable>姓名：</lable>
+                        <input class="form-control" type="text" name="name" ng-model="profile.name"/>
+                    </div>
+                    <div class="form-group">
+                        <lable>邮箱：</lable>
+                        <input class="form-control" type="text" name="name" ng-model="profile.email" readonly="readonly"/>
+                    </div>
+                </form>
+            </uib-accordion-group>
+            <uib-accordion-group heading="修改密码" >
+                <form name="changePassForm">
+                    <div class="form-group">
+                        <lable>当前密码：</lable>
+                        <input name="oldPass" class="form-control" type="password"  ng-model="oldpass" required/>
+                    </div>
+                    <div class="form-group">
+                        <lable>新密码：</lable>
+                        <input name="newPass" class="form-control" type="password"  ng-model="newpass" required/>
+                    </div>
+                    <div class="form-group">
+                        <lable>确认新密码：</lable>
+                        <input name="confirm" class="form-control" type="password"  ng-model="confirm" required/>
+                    </div>
+                    <button class="btn btn-primary btn-block" ng-click="changePassword(oldpass, newpass, confirm,changePassForm)">修改密码</button>
+                </form>
+            </uib-accordion-group>
+            <uib-accordion-group heading="修改邮箱" >
+                <form name="changeEmailForm">
+                    <div class="form-group">
+                        <lable>新邮箱：</lable>
+                        <input name="newEmail" class="form-control" type="email"  ng-model="newEmail" required/>
+                    </div>
+                    <div class="form-group">
+                        <lable>密码：</lable>
+                        <input name="pass" class="form-control" type="password"  ng-model="pass" required/>
+                    </div>
+                    <button class="btn btn-primary btn-block" ng-click="changeEmail(pass, newEmail,changeEmailForm)">修改邮箱</button>
+                </form>
+            </uib-accordion-group>
+        </uib-accordion>
+        <button class="btn btn-warning btn-block" ng-click="logout()">退出登录</button>
+    </div>
+</div>

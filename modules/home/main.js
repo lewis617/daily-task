@@ -1,0 +1,1 @@
+define(['./ctrl','./config'], function () {});

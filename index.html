@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Task</title>
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+  <!--<script data-main="https://dn-liuyiqi.qbox.me/lyjy-build-main" src="https://cdn.bootcss.com/require.js/2.1.20/require.min.js"></script>-->
+  <script data-main="dist/build-main" src="https://cdn.bootcss.com/require.js/2.1.20/require.min.js"></script>
+  <!--<script data-main="main" src="https://cdn.bootcss.com/require.js/2.1.20/require.min.js"></script>-->
+</head>
+<body ng-cloak >
+<nav class="navbar navbar-default ">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- 自适应隐藏导航展开按钮 -->
+      <button type="button" class="navbar-toggle collapsed" ng-click="navIsCollapsed = !navIsCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- 导航条LOGO -->
+      <a class="navbar-brand" href="#/home" ng-click="navIsCollapsed = false">Daily Task</a>
+    </div>
+    <div class="collapse navbar-collapse" uib-collapse="!navIsCollapsed">
+      <ul class="nav navbar-nav">
+         <li ng-show="loggedIn"><a href="#/task" ng-click="navIsCollapsed = false">任务</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="loggedIn"><a href="#/login" ng-click="navIsCollapsed = false">登录</a></li>
+        <li ng-show="loggedIn"><a href="#/account" ng-click="navIsCollapsed = false">账户</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" >{{alert.msg}}</uib-alert>
+</div>
+<wait></wait>
+<div ng-view></div>
+</body>
+</html>

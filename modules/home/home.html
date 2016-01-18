@@ -1,0 +1,9 @@
+<div class="jumbotron text-center">
+    <h1>你好</h1>
+    <p>这是一个日常任务发布管理系统。<br>您可以在这里发布自己当天的任务，也可以查看团队成员的任务。</p>
+    <p ng-hide="loggedIn"><a class="btn btn-primary btn-lg" href="#/login" role="button">登录 &raquo;</a></p>
+    <p class="text-success" ng-show="loggedIn">
+        欢迎，{{profile.name||profile.email}}，您已经成功登录！<br>
+        <a class="btn " href="#/task" >看看大家都在干什么 &raquo;</a>
+    </p>
+</div>

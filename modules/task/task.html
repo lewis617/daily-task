@@ -23,7 +23,8 @@
         <table class="table  table-condensed" style="table-layout: fixed; word-wrap: break-word;">
             <thead>
                 <tr class="bg-primary" align="right">
-                    <th width="180">日期</th>
+                    <th width="10"></th>
+                    <th width="130">日期</th>
                     <th width="100">人员</th>
                     <th width="50">标签</th>
                     <th width="100">模块</th>
@@ -36,6 +37,7 @@
             <tbody>
                 <tr ng-repeat="task in tasks | filter: filterFunctions.name| filter:filterFunctions.status| filter:filterFunctions.date |orderBy:'-date'"
                     ng-class="{'warning':!task.status,'success':task.status}">
+                    <td></td>
                     <td>{{task.date|date:'yyyy-MM-dd hh:mm:ss'}}</td>
                     <td>{{task.user}}</td>
                     <td>{{task.detail.option}}</td>

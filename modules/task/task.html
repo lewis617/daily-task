@@ -1,49 +1,63 @@
-<div  class="container">
+<div class="container">
     <form class="form-inline" name="filterTaskForm">
         <div class="form-group">
             <label for="user">筛选成员：</label>
-            <select class="form-control" ng-model="filters.user" ng-options="user.name for user in users" id="user">
-            </select>
+            <input type="text" class="form-control" ng-model="filters.user" id="user" placeholder="请输入成员关键字">
         </div>
         <div class="form-group">
             <label for="status">状态：</label>
-            <select class="form-control" ng-model="filters.status.id" ng-options="status.id as status.string for status in statusArray" id="status">
+            <select class="form-control" ng-model="filters.status.id"
+                    ng-options="status.id as status.string for status in statusArray" id="status">
             </select>
         </div>
         <div class="form-group">
             <label for="date">日期：</label>
-            <input type="date" id="date" ng-model="filters.date" class="form-control" uib-datepicker-popup >
+            <input type="date" ng-model="filters.date" class="form-control" id="date" uib-datepicker-popup>
         </div>
 
-        <button class="btn btn-success pull-right" ng-click="open()">添加</button>
+        <button class="btn btn-success" ng-click="open()">添加</button>
     </form>
     <br>
     <!-- 任务列表-->
-    <table class="table  table-condensed" style="table-layout: fixed; word-wrap: break-word;">
-        <thead>
-        <tr class="bg-primary" align="right"><th>日期</th><th>人员</th><th>标签</th><th>模块</th><th>--</th><th>内容</th><th>预期</th><th>操作</th></tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="task in tasks | filter: filterFunctions.name| filter:filterFunctions.status| filter:filterFunctions.date |orderBy:'-date'" ng-class="{'warning':!task.status,'success':task.status}">
-            <td>{{task.date|date:'EEEE, MMMM d,y'}}</td>
-            <td>{{task.user}}</td>
-            <td>{{task.detail.option}}</td>
-            <td>{{task.detail.module}}</td>
-            <td>的</td>
-            <td>{{task.detail.content}}</td>
-            <td>{{task.detail.result}}</td>
-            <td>
-                <div ng-if="task.user==profile.name">
-                    <a  ng-if="!task.status" ng-click="finishTask(task.$id)"><i class="glyphicon glyphicon-ok"></i></a>
-                    <a  ng-if="task.status" ng-click="restartTask(task.$id)"><i class="glyphicon glyphicon-repeat"></i></a>
-                    &nbsp;
-                    <a  ng-click="deleteTask(task.$id)"><i class="glyphicon glyphicon-remove"></i></a>
-                </div>
-            </td>
-        </tr>
-        </tbody>
+    <div style="overflow: auto">
+        <table class="table  table-condensed" style="table-layout: fixed; word-wrap: break-word;">
+            <thead>
+                <tr class="bg-primary" align="right">
+                    <th width="180">日期</th>
+                    <th width="100">人员</th>
+                    <th width="50">标签</th>
+                    <th width="100">模块</th>
+                    <th width="30">--</th>
+                    <th width="100">内容</th>
+                    <th width="400">预期</th>
+                    <th width="70">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in tasks | filter: filterFunctions.name| filter:filterFunctions.status| filter:filterFunctions.date |orderBy:'-date'"
+                    ng-class="{'warning':!task.status,'success':task.status}">
+                    <td>{{task.date|date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                    <td>{{task.user}}</td>
+                    <td>{{task.detail.option}}</td>
+                    <td>{{task.detail.module}}</td>
+                    <td>的</td>
+                    <td>{{task.detail.content}}</td>
+                    <td>{{task.detail.result}}</td>
+                    <td>
+                        <div ng-if="task.user==profile.name">
+                            <a ng-if="!task.status" ng-click="finishTask(task.$id)"><i
+                                    class="glyphicon glyphicon-ok"></i></a>
+                            <a ng-if="task.status" ng-click="restartTask(task.$id)"><i
+                                    class="glyphicon glyphicon-repeat"></i></a>
+                            &nbsp;
+                            <a ng-click="deleteTask(task.$id)"><i class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
 
-    </table>
+        </table>
+    </div>
 
 </div>
 
@@ -53,19 +67,19 @@
         <h3 class="modal-title">添加今日任务</h3>
     </div>
     <div class="modal-body">
-        <form name="addTaskForm" >
+        <form name="addTaskForm">
             <div class="form-group">
-                <select class="form-control" ng-model="my_new_task.option"  ng-options="a as a for a in options">
+                <select class="form-control" ng-model="my_new_task.option" ng-options="a as a for a in options">
                 </select>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="模块名称"  ng-model="my_new_task.module" required>
+                <input type="text" class="form-control" placeholder="模块名称" ng-model="my_new_task.module" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="内容"   ng-model="my_new_task.content" required>
+                <input type="text" class="form-control" placeholder="内容" ng-model="my_new_task.content" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="预期效果" ng-model="my_new_task.result" required>
+                <textarea class="form-control" placeholder="预期效果" ng-model="my_new_task.result" required></textarea>
             </div>
         </form>
     </div>
